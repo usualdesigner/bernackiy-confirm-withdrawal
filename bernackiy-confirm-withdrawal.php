@@ -6,10 +6,14 @@
  * Author URI: http://bernackiy.name
  */
 
-wp_enqueue_script('jquery');
+function my_wp_enqueue_scripts()
+{
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery_cookie', plugins_url('assets/jquery-cookie/src/jquery.cookie.js', __FILE__));
+    wp_enqueue_script('bernackiy_confirm_withdrawal_js', plugins_url('assets/bernackiy-confirm-withdrawal.js', __FILE__));
+}
 
-wp_enqueue_script('jquery_cookie', plugins_url('assets/jquery-cookie/src/jquery.cookie.js', __FILE__));
-wp_enqueue_script('bernackiy_confirm_withdrawal_js', plugins_url('assets/bernackiy-confirm-withdrawal.js', __FILE__));
+add_action('wp_enqueue_scripts', 'my_wp_enqueue_scripts');
 
 class BernackiyConfirmWithdrawalPlugin
 {
